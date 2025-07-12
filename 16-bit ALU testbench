@@ -1,0 +1,30 @@
+module tstbnch;
+  reg[15:0]a,b;
+  reg[3:0]sel;
+  wire[15:0]out;
+  ALU one(out,a,b,sel);
+  initial begin 
+    $monitor("time=%g,a=%h,b=%h,sel=%b,out=%h",$time,a,b,sel,out);
+     a = 16'h0010; b = 16'h0004;
+   #10  sel = 4'b0000;  // ADD
+   #10 sel = 4'b0001;  // SUB
+   #10 sel = 4'b0010;  // AND
+   #10 sel = 4'b0011;  // OR
+   #10 sel = 4'b0100;  // XOR
+    #10 sel = 4'b0101;  // NOT
+   #10 sel = 4'b0110;  // LSHIFT
+    #10 sel = 4'b0111;  // RSHIFT
+    #10 sel = 4'b1000;  // MUL
+    #10 sel = 4'b1001;  // DIV
+    #10 sel = 4'b1010;  // MOD
+    #10 sel = 4'b1011;  // EQ
+    #10 sel = 4'b1100;  // GT
+    #10 sel = 4'b1101;  // LT
+    #10 sel = 4'b1110; // NAND
+    #10 sel = 4'b1111;  // NOR
+
+
+ 
+    #200 $finish ;
+  end
+endmodule 
